@@ -1,0 +1,29 @@
+{
+
+    "name" : "Sample Product",
+    "type"  : "simple|variant",
+    "quantity" : 20
+    "variatons" : [
+
+        {
+            id : "a232f34323232ewsfs",
+            name : "color",
+            attributes : [
+                {
+
+                "id" : "a34343sfsd",
+                "name" : "Blue",
+                "quantity" : 10,
+
+                }
+
+            ]
+        }
+
+
+
+    ]
+
+
+
+}
