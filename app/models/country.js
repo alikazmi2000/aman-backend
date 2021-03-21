@@ -6,6 +6,7 @@ const Schema = new mongoose.Schema(
     {
         name: String,
         code: String,
+        charges:Number,
         states : { type: mongoose.Schema.Types.Mixed }
     },
     {

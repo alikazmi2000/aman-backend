@@ -4,14 +4,15 @@ const Schema = new mongoose.Schema(
     {
         
         sku: String,
-        price: String,
+        price: Number,
+        weight: Number,
         status: String,
         tax_status: String,
         tax_class: String,
         manage_stock: Boolean,
         stock_quantity: Number,
         stock_status: String,
-        attributes: { type: mongoose.Schema.Types.Mixed }
+        attributes: [{ type: mongoose.Schema.Types.Mixed }]
     },
     {
         versionKey: false,

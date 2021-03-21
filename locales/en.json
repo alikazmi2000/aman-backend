@@ -96,6 +96,19 @@
 		"GET_SINGLE_SUCCESS": "Document found Successfully",
 		"GET_SINGLE_ERROR": "Unable to find the document."
 	},
+	"Country": {
+		"LIST_SUCCESS": "country listed Successfully",
+		"LIST_ERROR": "Unable to retrieve the country list.",
+		"ALREADY_EXISTS": "The country with this name or value already exists.",
+		"UPDATE_SUCCESS": "country updated Successfully",
+		"UPDATE_ERROR": "Unable to update the country.",
+		"CREATE_SUCCESS": "country added Successfully",
+		"CREATE_ERROR": "Unable to add the country.",
+		"DELETE_SUCCESS": "country deleted Successfully",
+		"DELETE_ERROR": "Unable to delete the country.",
+		"GET_SINGLE_SUCCESS": "Document found Successfully",
+		"GET_SINGLE_ERROR": "Unable to find the document."
+	},
 	"Tax": {
 		"LIST_SUCCESS": "Tax listed Successfully",
 		"LIST_ERROR": "Unable to retrieve the tax list.",

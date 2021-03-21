@@ -313,6 +313,7 @@ const createItem = (req, res, next) => {
     type: Joi.string().valid('simple', 'variable').default('simple'),
     sku: Joi.string().required(),
     price: Joi.number().required(),
+    weight: Joi.number().required(),
     tax_status: Joi.string().allow('').default('taxable'),
     tax_class: Joi.string().allow('').default(''),
     stock_quantity: Joi.number().required(),
@@ -336,6 +337,7 @@ const createItem = (req, res, next) => {
     variations: Joi.array().items(Joi.object({
       attribute: Joi.array().required(),
       price:Joi.number().required(),
+      weight: Joi.number().required(),
       manage_stock:Joi.boolean().default(true),
       stock_quantity:Joi.number().required(),
     })).optional(),
@@ -366,6 +368,7 @@ const updateItem = (req, res, next) => {
     type: Joi.string().valid('simple', 'variable').default('simple'),
     //sku: Joi.string().required(),
     price: Joi.number().required(),
+    weight: Joi.number().required(),
     //tax_status: Joi.string().allow('').default('taxable'),
     //tax_class: Joi.string().allow('').default(''),
     stock_quantity: Joi.number().required(),
@@ -387,10 +390,13 @@ const updateItem = (req, res, next) => {
       visible:Joi.boolean().default(true),
     })).optional(),
     variations: Joi.array().items(Joi.object({
+      id:Joi.string().optional(),
       attribute: Joi.array().required(),
       price:Joi.number().required(),
       manage_stock:Joi.boolean().default(true),
       stock_quantity:Joi.number().required(),
+      weight: Joi.number().required(),
+
     })).optional(),
     sync_square: Joi.boolean().default(false)
 

@@ -28,22 +28,22 @@ const attributes = new mongoose.Schema({
     value: [String]
 }, { _id: false });
 
-const variations = new mongoose.Schema({
-    description: String,
-    sku: String,
-    price: String,
-    regular_price: String,
-    sale_price: String,
-    on_sale: String,
-    status: String,
-    // tax_status: String,
-    // tax_class: String,
-    manage_stock: Boolean,
-    stock_quantity: Number,
-    stock_status: String,
-    // attributes: { type: mongoose.Schema.Types.Mixed }
-    attributes
-})
+// const variations = new mongoose.Schema({
+//     description: String,
+//     sku: String,
+//     price: String,
+//     regular_price: String,
+//     sale_price: String,
+//     on_sale: String,
+//     status: String,
+//     // tax_status: String,
+//     // tax_class: String,
+//     manage_stock: Boolean,
+//     stock_quantity: Number,
+//     stock_status: String,
+//     // attributes: { type: mongoose.Schema.Types.Mixed }
+//     attributes
+// })
 
 const Schema = new mongoose.Schema({
     name: String,
@@ -56,7 +56,8 @@ const Schema = new mongoose.Schema({
     short_description: String,
     type: String,
     sku: String,
-    price: String,
+    price: Number,
+    weight: Number,
     // regular_price: { type: String, default: '' },
     // sale_price: { type: String, default: '' },
     tax_status: String,
@@ -88,8 +89,11 @@ const Schema = new mongoose.Schema({
             ref: 'brands'
         }
     ],
-    // attributes: { type: mongoose.Schema.Types.Mixed },
-    variations,
+    attributes: [],
+    variations:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'variations'
+    }],
     square_product_id: String,
     square_variation_id: String,
     sync_square: { type: Boolean, default: false },
