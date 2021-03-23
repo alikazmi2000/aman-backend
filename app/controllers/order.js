@@ -111,84 +111,6 @@ exports.createItem = async (req, res) => {
       return await productService.purchaseStock(item, queries);
     }));
 
-    data.line_items = _.compact(data.line_items)
-
-    let tax = await productService.getTaxCalculation(data);
-    // return res.send(tax)
-    // , price:1, regular_price:1
-    let total_tax = UtilService.sumOfArrayFields(tax, 'value', 'quantity');
-    let total = UtilService.sumOfArrayFields(tax, 'price', 'quantity');
-
-    // return res.send({ total_tax, total })
-
-    if (tax.length === data.line_items.length) {
-      data.line_items = data.line_items.map((item, index) => {
-        // console.log('line number => ', tax[index])
-        // console.log('quanitity in items => ', item.quantity)
-        // console.log('quanitity in tax => ', tax[index].quantity)
-        return {
-          ...item,
-          ...{
-            name: (!_.isUndefined(tax[index].variation_name) && !_.isEmpty(tax[index].variation_name))
-              ? `${item.name} - ${tax[index].variation_name}`
-              : item.name,
-            sku: tax[index].sku,
-            price: tax[index].price,
-            tax_class: tax[index].tax_class,
-            subtotal: Number(tax[index].price) * item.quantity,
-            subtotal_tax: Number(tax[index].value),
-            total: Number(tax[index].price) * item.quantity,
-            total_tax: Number(tax[index].value),
-          }
-        }
-      });
-    } else {
-      //there is an issue in calculating tax
-    }
-
-    let shipping_lines = await productService.getShippingDetails(data);
-    if (!shipping_lines.cost) {
-      shipping_lines.cost = 0;
-    }
-
-    let grand_total = total + Number(Number(shipping_lines.cost).toFixed(2))
-    grand_total = Number(grand_total.toFixed(2))
-
-    data.shipping_lines = {
-      ...data.shipping_lines,
-      ...shipping_lines,
-      ...{
-        total_tax,
-        total,
-        shipping_fee: Number(shipping_lines.cost),
-        grand_total
-      }
-    }
-    // return res.send({ line_items: data.line_items, shipping_lines: data.shipping_lines })
-    // need to verify this before going live
-
-    // TODO: Correct this percentage
-    data.tax_lines =
-    {
-      // "id" : NumberInt(1572),
-      // "rate_code" : "US-VA-VA TAX-1",
-      // "rate_id" : NumberInt(1),
-      // "label" : "VA Tax",
-      // "compound" : false,
-      tax_total: total_tax,
-      shipping_tax_total: 0,
-      rate_percent: 5.3,
-      // "meta_data" : [
-      // ]
-    }
-
-    data.invoice = {
-      subtotal: total,
-      total_tax: total_tax,
-      shipping_fee: Number(shipping_lines.cost),
-      grand_total
-    }
-
 
     let resp = null
     // if (data.payment_method === "paypal") {
@@ -207,9 +129,6 @@ exports.createItem = async (req, res) => {
     // }
 
     data.currency = 'USD';
-    // console.log(data);
-
-    // return res.send(_paypal)
     let orders = await db.createItem(data, Orders);
     if (resp===null) resp = orders
     

@@ -49,7 +49,7 @@ exports.resSingleProduct = (req) => {
     variations: req.variations,
     type: req.type,
     cartCount: 0,
-    weight: '',
+    weight: req.weight,
     categoryId: 100,
   };
 };
@@ -644,7 +644,7 @@ exports.relatedItemConversion = data => {
       cartCount: 0,
       color: [],
       size: [],
-      weight: 150,
+      weight: item.weight,
       images: item.images,
       featured: item.featured,
       newPrice: item.price,

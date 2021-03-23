@@ -17,6 +17,7 @@ const createItem = (req, res, next) => {
     last_name: Joi.string().required(),
     address:  Joi.string().required(),
     city:  Joi.string().required(),
+    shippment_weight:  Joi.number().required(),
     state: Joi.object({
         code:  Joi.string().required(),
         name:  Joi.string().required(),
@@ -25,6 +26,7 @@ const createItem = (req, res, next) => {
     country: Joi.object({
         code:  Joi.string().required(),
         name:  Joi.string().required(),
+        charges:  Joi.number().required(),
     }),
     email: Joi.string().email().required(),
     phone:  Joi.string().required(),
@@ -49,6 +51,7 @@ const createItem = (req, res, next) => {
     first_name: Joi.string().required(),
     last_name: Joi.string().required(),
     address:  Joi.string().required(),
+    shippment_weight:  Joi.number().required(),
     city:  Joi.string().required(),
     state: Joi.object({
         code:  Joi.string().required(),
@@ -58,6 +61,7 @@ const createItem = (req, res, next) => {
     country: Joi.object({
         code:  Joi.string().required(),
         name:  Joi.string().required(),
+        charges:  Joi.number().required(),
     })
     // first_name: Joi.string().required(),
     // last_name: Joi.string().required(),
@@ -75,6 +79,9 @@ const createItem = (req, res, next) => {
     product_id: Joi.objectId().required(),
     variation_id: Joi.objectId().optional(),
     quantity: Joi.number().required(),
+    weight:Joi.number().required(),
+    price:Joi.number().required(),
+    subtotal:Joi.number().required(),
     name: Joi.string().optional()
   }));
 
@@ -90,6 +97,7 @@ const shipping_lines =  Joi.object({
 
     payment_method: Joi.string().required(),
     paypal_id: Joi.string().allow('').required(),
+    invoice:Joi.object().required(),
     shipping,
     billing,
     shipping_lines,

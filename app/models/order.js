@@ -29,8 +29,11 @@ const billing = new mongoose.Schema({
     zip_code: String,
     country: {
         code: String,
-        name: String
+        name: String,
+        charges:Number
     },
+    shippment_weight:Number,
+
     email: String,
     phone: String
 });
@@ -61,8 +64,11 @@ const shipping = new mongoose.Schema({
     zip_code: String,
     country: {
         code: String,
-        name: String
-    }
+        name: String,
+        charges:Number
+    },
+    shippment_weight:Number,
+
 })
 
 
@@ -85,6 +91,7 @@ const line_items = new mongoose.Schema({
     // ],
     sku: String,
     price: Number,
+    weight: Number,
 });
 
 
@@ -116,6 +123,7 @@ const invoice = new mongoose.Schema({
 
     subtotal: Number,
     total_tax: Number,
+    shippment_weight:Number,
     shipping_fee: Number,
     grand_total: Number,
 

@@ -90,7 +90,6 @@ exports.relatedItems = async (req, res) => {
       brands: 1,
       categories: 1,
     });
-
     if (type === "brand") {
       query.brands = item.brands;
     }

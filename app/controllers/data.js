@@ -12,7 +12,7 @@ const { Status } = require('../enums');
 exports.getCountryList = async (req, res) => {
   try {
 
-    const items = await db.get(Country, {},{_id : 0,name:1,code:1});
+    const items = await db.get(Country, {},{_id : 0,name:1,code:1,charges:1});
     utils.handleSuccess(res, 'DATA.LIST_SUCCESS', items);
   } catch (error) {
     utils.handleError(req, res, error, 'DATA.LIST_ERROR');
