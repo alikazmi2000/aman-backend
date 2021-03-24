@@ -15,7 +15,7 @@ const items = [
     updatedAt: faker.date.recent()
   },
   {
-    _id: new ObjectID(to24DigitObjectId(leadingObjectId.user, 0)),
+    _id: new ObjectID(to24DigitObjectId(leadingObjectId.user, 1)),
     first_name: 'Aman',
     last_name: 'Admin',
     email: 'aman_admin@gmail.com',
