@@ -7,7 +7,7 @@ const items = [
     _id: new ObjectID(to24DigitObjectId(leadingObjectId.user, 0)),
     first_name: 'Ahmed',
     last_name: 'Admin',
-    email: 'test@gmail.com',
+    email: 'devtest@gmail.com',
     password: '$2a$05$ZrJ7kt//B1lGEqvt8hk8qePL5ZdcyrUsZ6egzpKyDUgZvKpvGmr7.',
     role: Roles.Admin,
     status: Status.Active,
@@ -15,34 +15,17 @@ const items = [
     updatedAt: faker.date.recent()
   },
   {
-    _id: new ObjectID(to24DigitObjectId(leadingObjectId.user, 1)),
-    first_name: 'Ahmed',
-    last_name: 'Seeker',
-    country_code: '+1',
-    phone_number: '3335421471',
-    email: 'test+seeker@gmail.com',
-    is_email_verified: true,
+    _id: new ObjectID(to24DigitObjectId(leadingObjectId.user, 0)),
+    first_name: 'Aman',
+    last_name: 'Admin',
+    email: 'aman_admin@gmail.com',
     password: '$2a$05$ZrJ7kt//B1lGEqvt8hk8qePL5ZdcyrUsZ6egzpKyDUgZvKpvGmr7.',
-    role: Roles.Seeker,
-    stripe_customer_id: 'cus_G8iwRvF1lr9v7C',
+    role: Roles.Admin,
     status: Status.Active,
     createdAt: faker.date.past(),
     updatedAt: faker.date.recent()
   },
-  {
-    _id: new ObjectID(to24DigitObjectId(leadingObjectId.user, 2)),
-    first_name: 'Ahmed',
-    last_name: 'Giver',
-    country_code: '+1',
-    phone_number: '3335421473',
-    email: 'test+giver@gmail.com',
-    is_email_verified: true,
-    password: '$2a$05$ZrJ7kt//B1lGEqvt8hk8qePL5ZdcyrUsZ6egzpKyDUgZvKpvGmr7.',
-    role: Roles.Giver,
-    status: Status.Active,
-    createdAt: faker.date.past(),
-    updatedAt: faker.date.recent()
-  },
+  
 
 ];
 
