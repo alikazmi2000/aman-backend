@@ -588,6 +588,7 @@ exports.convertAddress = data => {
 exports.boItemConversion = data => {
 
   return data.map(item => {
+    console.log(item);
     let obj = {
       _id: item._id,
       name: item.name,
@@ -616,7 +617,7 @@ exports.boItemConversion = data => {
       })
     }
 
-    if (item.variations != [] && item.stock_quantity === null) {
+    if (item.variations != [] && item.type === 'variable') {
       let stock = 0;
       item.variations.map(i => {
         stock += Number(i.stock_quantity);

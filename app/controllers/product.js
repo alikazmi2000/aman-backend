@@ -307,7 +307,21 @@ exports.updateItem = async (req, res) => {
     {
       data.variations = await Promise.all(
         data.variations.map(async (row, index) => {
-          if (row.id) return row.id;
+          if (row.id){
+            let stock_status = "";
+            if (row.manage_stock) {
+              if (row.stock_quantity > 0) stock_status = "instock";
+              else stock_status = "outofstock";
+            } else {
+              stock_status = "instock";
+            }
+  
+            data.stock_quantity = data.stock_quantity + row.stock_quantity;
+            data.price = data.variations[0].price;
+           const status = await db.updateItem(row.id,Variations,row)
+           console.log('status',status);
+           return row.id
+          }
           else {
             let stock_status = "";
             if (row.manage_stock) {
