@@ -451,7 +451,7 @@ exports.getProductAvailability = async (req, res) => {
             );
           }
 
-          if (!_.isUndefined(item.product_id)) {
+          if (_.isUndefined(item.variation_id)) {
             console.log("find by product id");
             //TODO: update this query -
             obj = await Crud.getOne(
@@ -462,7 +462,7 @@ exports.getProductAvailability = async (req, res) => {
           }
           console.log(obj);
           if (!_.isNull(obj)) {
-            if (Number(obj.stock_quantity) === item.quantity) {
+            if (Number(obj.stock_quantity) >= item.quantity) {
               return { id: item.product_id, flag: true };
             } else
               return {
