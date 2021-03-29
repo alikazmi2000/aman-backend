@@ -286,7 +286,7 @@ exports.getItemDetails = async (req, res) => {
   try {
     // let query = await db.checkQueryString(req.query);
     let data = req.value;
-    let item = await db.getItemByQuery(data, Orders);
+    let item = await db.getItemByQuery(data, Orders,true,'variation_id');
     // items.docs = orderService.boItemConversion(items.docs);
     // const info = utils.setInfo(items, serviceCategoriesService.resDocument, true);
     utils.handleSuccess(res, 'ORDER.GET_SINGLE_SUCCESS', item);
