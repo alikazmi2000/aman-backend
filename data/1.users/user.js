@@ -16,9 +16,9 @@ const items = [
   },
   {
     _id: new ObjectID(to24DigitObjectId(leadingObjectId.user, 3)),
-    first_name: 'Aman',
+    first_name: 'Demo',
     last_name: 'Admin',
-    email: 'aman_admin@gmail.com',
+    email: 'demoAdmin@gmail.com',
     password: '$2a$05$ZrJ7kt//B1lGEqvt8hk8qePL5ZdcyrUsZ6egzpKyDUgZvKpvGmr7.',
     role: Roles.Admin,
     status: Status.Active,
