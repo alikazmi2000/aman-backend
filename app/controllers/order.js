@@ -11,6 +11,10 @@ const productService = require('../services/Products');
 const CrudService = require('../services/Crud');
 const UtilService = require('../services/Utils');
 const paypal = require('../services/paypal');
+const sgMail = require('@sendgrid/mail');
+const emailTemplate = require('../templates/order');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+console.log(process.env.SENDGRID_API_KEY)
 const _ = require('lodash');
 /**
  * Get all items function called by route
@@ -181,6 +185,38 @@ exports.createItem = async (req, res) => {
 
     //   utils.handleSuccess(res, 'ORDER.CREATE_SUCCESS', orders);
     // }
+    
+    const msg = {
+      to: orders.billing.email, // Change to your recipient
+      from: 'sales@amanstyles.com', // Change to your verified sender
+      subject: 'Order Email',
+      html: emailTemplate.invitationTemplate(orders,''),
+    }
+    sgMail
+      .send(msg)
+      .then(() => {
+        console.log('Email sent')
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+
+
+
+      const msg = {
+        to: 'sales@amanstyles.com', // Change to your recipient
+        from: 'sales@amanstyles.com', // Change to your verified sender
+        subject: 'Order Email',
+        html: emailTemplate.invitationTemplate(orders,''),
+      }
+      sgMail
+        .send(msg)
+        .then(() => {
+          console.log('Email sent')
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     utils.handleSuccess(res, 'ORDER.CREATE_SUCCESS', resp);
 
   } catch (error) {
