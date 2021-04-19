@@ -186,7 +186,7 @@ exports.createItem = async (req, res) => {
     //   utils.handleSuccess(res, 'ORDER.CREATE_SUCCESS', orders);
     // }
     
-    const msg = {
+    let msg = {
       to: orders.billing.email, // Change to your recipient
       from: 'sales@amanstyles.com', // Change to your verified sender
       subject: 'Order Email',
@@ -203,7 +203,7 @@ exports.createItem = async (req, res) => {
 
 
 
-      const msg = {
+       msg = {
         to: 'sales@amanstyles.com', // Change to your recipient
         from: 'sales@amanstyles.com', // Change to your verified sender
         subject: 'Order Email',
