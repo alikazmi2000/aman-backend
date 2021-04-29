@@ -38,6 +38,7 @@ exports.resSingleProduct = (req) => {
     images: req.images,
     //oldPrice: req.regular_price,
     newPrice: req.price,
+    salePrice: req.salePrice,
     //discount: null,
     ratingsCount: req.rating_count,
     ratingsValue: 350,
