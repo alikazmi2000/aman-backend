@@ -5,6 +5,7 @@ const Schema = new mongoose.Schema(
         
         sku: String,
         price: Number,
+        salePrice: {type:Number,default:0},
         weight: Number,
         status: String,
         tax_status: String,

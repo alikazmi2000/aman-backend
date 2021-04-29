@@ -57,6 +57,7 @@ const Schema = new mongoose.Schema({
     type: String,
     sku: String,
     price: Number,
+    salePrice: {type:Number,default:0},
     weight: Number,
     // regular_price: { type: String, default: '' },
     // sale_price: { type: String, default: '' },

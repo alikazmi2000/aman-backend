@@ -318,6 +318,7 @@ exports.updateItem = async (req, res) => {
   
             data.stock_quantity = data.stock_quantity + row.stock_quantity;
             data.price = data.variations[0].price;
+            data.salePrice = data.variations[0].salePrice;
            const status = await db.updateItem(row.id,Variations,row)
            console.log('status',status);
            return row.id
@@ -333,10 +334,12 @@ exports.updateItem = async (req, res) => {
   
             data.stock_quantity = data.stock_quantity + row.stock_quantity;
             data.price = data.variations[0].price;
+            data.salePrice = data.variations[0].salePrice;
   
             let variationObj = {
               attributes: row.attribute,
               price: row.price,
+              salePrice: row.salePrice,
               manage_stock: row.manage_stock,
               stock_quantity: row.stock_quantity,
               sku: data.sku + "-" + index,
@@ -356,6 +359,7 @@ exports.updateItem = async (req, res) => {
     const item = await db.updateItem(data.id, Products, data);
     utils.handleSuccess(res, "PRODUCT.UPDATE_SUCCESS", item);
   } catch (error) {
+    console.log(error);
     utils.handleError(req, res, error);
   }
 };
